@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>history原理</title>
+</head>
+<body>
+    <!-- history原理：靠的是h5中的api：history.pushState popstate 等 -->
+    <a onclick="go('/home')">首页</a>
+    <a onclick="go('/about')">关于</a>
+    <div id="box"></div>
+</body>
+<script>
+    function go(pathname){
+        //pushState方法,里面有三个参数
+        history.pushState({},null,pathname)
+        box.innerHTML = pathname
+    }
+    //popstate方法
+    window.addEventListener("popstate",()=>{
+        // console.log(".....")
+        console.log(location.pathname)
+        go(location.pathname)
+    })
+</script>
+</html>
